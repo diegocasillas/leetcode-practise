@@ -19,18 +19,18 @@ export const twoSum = (nums: number[], target: number): number[] => {
 // https://leetcode.com/problems/reverse-integer/
 export const reverse = (x: number): number => {
   const isNegative = x < 0;
-  const stringified = x.toString();
-  const unsigned = isNegative
-    ? stringified.substring(1)
-    : stringified.toString();
 
-  let reversedString = "";
+  const reversedString = Math.abs(x)
+    .toString()
+    .split("")
+    .reduceRight(
+      (reversed, cur) => {
+        return reversed + cur;
+      },
+      isNegative ? "-" : ""
+    );
 
-  for (let i = unsigned.length - 1; i >= 0; i--) {
-    reversedString += unsigned[i];
-  }
-
-  const parsed = parseInt(isNegative ? `-${reversedString}` : reversedString);
+  const parsed = parseInt(reversedString);
 
   return Math.pow(-2, 31) <= parsed && parsed <= Math.pow(2, 31) - 1
     ? parsed
