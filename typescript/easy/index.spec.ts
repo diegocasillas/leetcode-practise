@@ -1,4 +1,4 @@
-const { twoSum, addTwoNumbers } = require("./index");
+const { twoSum, reverse } = require("./index");
 
 describe("twoSum", () => {
   it.each([
@@ -11,4 +11,17 @@ describe("twoSum", () => {
       expect(twoSum(nums, target)).toEqual(expected);
     }
   );
+});
+
+describe("reverse", () => {
+  it.each([
+    [123, 321],
+    [-123, -321],
+    [120, 21],
+    [0, 0],
+    [Math.pow(-2, 31) - 1, 0],
+    [Math.pow(2, 31), 0],
+  ])("reverses integer: given %p, expected %p", (integer, expected) => {
+    expect(reverse(integer)).toEqual(expected);
+  });
 });
