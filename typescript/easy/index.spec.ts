@@ -1,4 +1,4 @@
-const { twoSum, reverse } = require("./index");
+import { twoSum, reverse, romanToInt } from ".";
 
 describe("twoSum", () => {
   it.each([
@@ -23,5 +23,17 @@ describe("reverse", () => {
     [Math.pow(2, 31), 0],
   ])("reverses integer: given %p, expected %p", (integer, expected) => {
     expect(reverse(integer)).toEqual(expected);
+  });
+});
+
+describe("romanToInt", () => {
+  it.each([
+    ["III", 3],
+    ["IV", 4],
+    ["IX", 9],
+    ["LVIII", 58],
+    ["MCMXCIV", 1994],
+  ])("converts roman to integer: given %p, expected %p", (roman, expected) => {
+    expect(romanToInt(roman)).toEqual(expected);
   });
 });
